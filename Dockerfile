@@ -21,7 +21,7 @@ RUN apt-get update \
     && cat ~/.ssh/id_ecdsa.pub > ~/.ssh/authorized_keys
 
 # Expose ports: 8002 for m2web
-EXPOSE 8002
+EXPOSE 22 8002
 
 # Copy the startup script
 COPY start.sh /usr/local/bin/start.sh
