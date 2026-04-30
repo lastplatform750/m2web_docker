@@ -12,8 +12,8 @@ RUN mkdir -p /var/run/sshd
 RUN sed -i 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' /etc/pam.d/sshd
 
 RUN wget -O /etc/apt/sources.list.d/macaulay2.sources https://macaulay2.com/Repositories/Debian/trixie/macaulay2.sources
-RUN apt update
-RUN apt install macaulay2
+RUN apt-get update
+RUN apt-get install -y macaulay2
 
 # Install and set up m2web app
 WORKDIR /opt
