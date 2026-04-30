@@ -13,7 +13,7 @@ RUN sed -i 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid
 
 RUN wget -O /etc/apt/sources.list.d/macaulay2.sources https://macaulay2.com/Repositories/Debian/trixie/macaulay2.sources
 RUN apt update
-RUN apt install macaulay2 macaulay2-common
+RUN apt install macaulay2
 
 # Install and set up m2web app
 WORKDIR /opt
