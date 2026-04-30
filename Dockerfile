@@ -7,7 +7,7 @@ EXPOSE 8002
 
 USER root
 # Install deps
-RUN apt-get update && apt-get install -y openssh-server openssh-client macaulay2 npm nodejs git wget
+RUN apt-get update && apt-get install -y ca-certificates openssh-server openssh-client macaulay2 npm nodejs git wget
 RUN mkdir -p /var/run/sshd
 RUN sed -i 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' /etc/pam.d/sshd
 
