@@ -1,6 +1,9 @@
 ---
 services:
-  image: m2web:latest
-  user: "root:root"
-  volumes:
-    - /var/run/docker.sock:/var/run/docker.sock
+  m2web:
+    image: m2web:latest
+    user: "root:root"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 8002:8002/tcp

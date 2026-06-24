@@ -7,7 +7,7 @@ EXPOSE 8002
 
 USER root
 # Install deps
-RUN apt-get update && apt-get install -y openssh-server openssh-client npm nodejs git wget
+RUN apt-get update && apt-get install -y docker-cli openssh-server openssh-client npm nodejs git wget
 RUN mkdir -p /var/run/sshd
 RUN sed -i 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' /etc/pam.d/sshd
 
@@ -19,7 +19,9 @@ WORKDIR /opt/Macaulay2Web
 RUN git submodule init \
     && git submodule update \
     && npm install
-RUN ssh-keygen -b 1024 -f id_rsa -P ''
+
+# Copy in key for accessing m2 docker
+COPY id_rsa /root/.ssh/id_rsa
 
 # Copy the startup script
 COPY start.sh /usr/local/bin/start.sh
