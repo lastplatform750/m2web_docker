@@ -20,7 +20,7 @@ WORKDIR /opt
 RUN git clone https://github.com/pzinn/Macaulay2Web.git
 
 WORKDIR /opt/Macaulay2Web
-RUN git checkout $(git rev-list -n 1 --before="2026-04-10 23:59:59" main)
+RUN git checkout $(git rev-list -n 1 --before="2026-05-20 23:59:59" main)
 RUN git submodule init \
     && git submodule update \
     && npm install \
