@@ -7,13 +7,9 @@ EXPOSE 8002
 
 USER root
 # Install deps
-RUN apt-get update && apt-get install -y ca-certificates openssh-server openssh-client npm nodejs git wget
+RUN apt-get update && apt-get install -y openssh-server openssh-client npm nodejs git wget
 RUN mkdir -p /var/run/sshd
 RUN sed -i 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' /etc/pam.d/sshd
-
-RUN wget -O /etc/apt/sources.list.d/macaulay2.sources https://macaulay2.com/Repositories/Debian/trixie/macaulay2.sources
-RUN apt-get update
-RUN apt-get install -y macaulay2
 
 # Install and set up m2web app
 WORKDIR /opt
@@ -22,8 +18,8 @@ RUN git clone https://github.com/pzinn/Macaulay2Web.git
 WORKDIR /opt/Macaulay2Web
 RUN git submodule init \
     && git submodule update \
-    && npm install \
-    && npm run build
+    && npm install
+RUN ssh-keygen -b 1024 -f id_rsa -P ''
 
 # Copy the startup script
 COPY start.sh /usr/local/bin/start.sh

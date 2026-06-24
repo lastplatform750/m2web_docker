@@ -14,4 +14,4 @@ echo "Starting sshd"
 # Start m2web
 echo "Starting m2web"
 cd /opt/Macaulay2Web
-npm start local
+npm run docker

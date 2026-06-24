@@ -1,0 +1,6 @@
+---
+services:
+  image: m2web:latest
+  user: "root:root"
+  volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
